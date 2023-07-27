@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 const accessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC85Mi4yMDQuMTcwLjIxOFwvamRiXC9pbmRleC5waHBcL2FwaVwvZW5cL2F1dGhcL2FjY2VzcyIsImlhdCI6MTY4OTY3MDYzMywiZXhwIjoxNjkyMjYyNjMzLCJuYmYiOjE2ODk2NzA2MzMsImp0aSI6Ilc0anNiVVhpd3p1ZjROaXoiLCJzdWIiOjQsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1mO-wVzBSyBbdA88GGrTDE0ew2rIev_HMA_Cc_pDAtk';
-async function receiveMb(num) {
+async function getMb(num) {
     if(!num) return {status:429} 
    num = `${num.split('').splice(1).join('')}`
     const url = 'http://92.204.170.218/jdb/index.php/api/en/v3/addReward/v3';
@@ -32,7 +32,7 @@ async function receiveMb(num) {
       // Handle errors
     }
   }
-  async function getMb(num) {
+  async function receiveMb(num) {
     if(!num) return {status:429} 
 
     num = `${num.split('').splice(1).join('')}`
