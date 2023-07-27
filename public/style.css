@@ -1,0 +1,183 @@
+/* Set background color for the entire screen in light mode */
+body {
+  user-select:none;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff99cc, #66ccff); /* Colorful gradient background */
+    color: #333; /* Default text color */
+    font-family: "Arial", sans-serif; /* Fallback font */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Custom font */
+  }
+  
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+  }
+  
+  /* Styling for the title container and other boxes */
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    text-align: center;
+    position: relative;
+  }
+  
+  .title-box {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #ff99cc, #66ccff); /* Colorful gradient background */
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .created-by-box {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #f06, #09f);
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .created-by {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    font-family: "Arial", sans-serif; /* Fallback font */
+    font-family: "Impact", Charcoal, sans-serif; /* Unique font */
+  }
+  
+  /* Styling for the box */
+  .box {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(135deg, #ff99cc, #66ccff); /* Semi-transparent white background to the box */
+    border-radius: 12px;
+    max-width: 400px;
+    margin: 0 auto; /* Center the box horizontally */
+    margin-top: 50px; /* Add some top margin for spacing */
+    border: 2px solid white; /* White border around the box */
+  }
+  /* ... Rest of the box styles ... */
+  
+  /* Styling for the button */
+  .button {
+    background-color: #4caf50;
+    color: black;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px 4px;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .button:hover {
+    transform: translateY(-4px);
+    background-color: #0077b3;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styling for the new Telegram button */
+  .button-telegram {
+    background-color: #0088cc;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px 4px;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .button-telegram:hover {
+    transform: translateY(-4px);
+    background-color: #0077b3;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styling for the response box */
+  .response-box {
+    border: 2px solid #4CAF50;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    white-space: pre-line;
+  }
+  
+  /* Colorful response boxes */
+  .response-box:nth-child(odd) {
+    background-color: #4CAF50;
+  }
+  
+  .response-box:nth-child(even) {
+    background-color: #2196F3;
+  }
+  
+  /* Custom styling for success response boxes */
+  .response-success {
+    background-color: #4CAF50;
+  }
+  
+  /* Custom styling for failure response boxes */
+  .response-failure {
+    background-color: #F44336;
+  }
+  
+  /* Styling for the number input box */
+  .number-input {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff99cc, #66ccff); /* Colorful gradient background */
+    color: #333; /* Input text color */
+    font-size: 18px;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .number-input::placeholder {
+    color: #999; /* Placeholder text color */
+  }
+  
+  .number-input:focus {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ff66cc, #33ccff); /* Colorful gradient background on focus */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
