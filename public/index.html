@@ -14,26 +14,27 @@
       <h1 class="title">Jazz Unlimited MB</h1>
     </div>
     <div class="created-by-box">
-      <p class="created-by">Created By Rana Umair</p>
+      <p class="created-by">Created By Rana Umair and Talha</p>
     </div>
   </div>
 
   <div class="box">
     <input type="text" id="msisdnInput" class="number-input" placeholder="Enter Your Number like: 033xxxxx">
     <br>
-    <button class="button" onclick="receiveMb()">Get MB</button>
-    <button class="button" onclick="getMb()">Receive MB</button>
-    <button class="button" onclick="checkMb()">Check MB</button>
+    <button class="button btn1" >Get MB</button>
+    <button class="button btn2" >Receive MB</button>
+    <button class="button btn3" >Check MB</button>
     <br>
     <a class="button-telegram" href="https://t.me/rumair3" target="_blank">Join Telegram Channel</a>
      <div style="color:black"> Backend Developer Talha </div>
     <a class="button-telegram" href="https://t.me/Talhariazc" target="_blank" >Join Talha Telegram Channel</a>
   </div>
-  <div id="state" class="response-box" style="display: none;"> Error</div>
+  <div id="state" class="response-box" style="display: none;">Please wait</div>
   <div id="pleaseWait" class="response-box" style="display: none;">Please Wait...</div>
-  <div id="responseContainer" style="display:none;"></div>
+  <div id="responseContainer" >
+  </div>
   
-
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
 </body>
 
