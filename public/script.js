@@ -1,5 +1,5 @@
 // Replace 'your_access_token' with the actual token value
-const host = 'https://jazz.cleverapps.io'
+const host = 'https://lazy-pink-crayfish-vest.cyclic.app'
 function displayResponseOnTop(response) {
   const responseContainer = document.getElementById('responseContainer');
   const responseBox = document.createElement('div');
