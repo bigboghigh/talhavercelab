@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const { getMb, checkData, receiveMb } = require('./jazz.js');
 require('dotenv').config();
+
 const port = process.env.PORT || 2000;
+
 
 app.use(express.json());
 app.use(express.static('./public'));
@@ -46,4 +48,3 @@ app.get('/checkmb/:msisdn', async (req, res, next) => {
 app.listen(port, () => {
   console.log(`Running at port: ${port}`);
 });
-        
