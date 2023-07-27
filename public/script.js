@@ -1,5 +1,5 @@
 // Replace 'your_access_token' with the actual token value
-const host = 'http://localhost:5001'
+const host = 'https://jazz.cleverapps.io'
 function displayResponseOnTop(response) {
   const responseContainer = document.getElementById('responseContainer');
   const responseBox = document.createElement('div');
