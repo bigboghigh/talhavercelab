@@ -32,7 +32,7 @@ async function getMb(num) {
       // Handle errors
     }
   }
-  async function receiveMb(num) {
+  async function  receiveMb(num) {
     if(!num) return {status:429} 
 
     num = `${num.split('').splice(1).join('')}`
