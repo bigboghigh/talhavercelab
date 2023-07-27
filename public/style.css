@@ -62,7 +62,7 @@ body {
   
   .created-by {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 100;
     margin: 0;
     font-family: "Arial", sans-serif; /* Fallback font */
     font-family: "Impact", Charcoal, sans-serif; /* Unique font */
