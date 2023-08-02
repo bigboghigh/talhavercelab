@@ -1,5 +1,5 @@
 const input = document.querySelector('.number-input')
-const host = 'https://jazz-free.cyclic.app'
+const host = 'https://jazz-free-679c275288f1.herokuapp.com'
 const showCase = (elem)=>{
   const div = document.createElement('div')
   div.classList.add('response-box')
