@@ -4,8 +4,12 @@ const { getMb, checkData, receiveMb } = require('./jazz.js');
 require('dotenv').config();
 const script = require('./script.js')
 const port = process.env.PORT || 5000;
-
-
+const cors = require('cors')
+var corsOptions = {
+  origin: 'http://example.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions))
 app.use(express.json());
 app.use(express.static('./public'));
 
