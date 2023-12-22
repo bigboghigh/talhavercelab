@@ -25,7 +25,7 @@ const data = {
 };
 
 const res =await axios.post(url, data, { headers })
-console.log(res)
+
 return res.data.token;
 }
 
