@@ -3,7 +3,7 @@ const app = express();
 const { getMb, checkData, receiveMb } = require('./jazz.js');
 require('dotenv').config();
 
-const port = process.env.PORT || 2000;
+const port = process.env.PORT || 5000;
 
 
 app.use(express.json());
@@ -14,7 +14,15 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
 });
-
+app.get('/activate',async(req,res)=>{
+  try {
+     
+    const data = await require('./script.js')()
+    res.json({data})
+  } catch (error) {
+    res.json({error:error.message})
+  }
+})
 app.get('/getmb/:msisdn', async (req, res, next) => {
   try {
     const { msisdn } = req.params;
@@ -44,7 +52,9 @@ app.get('/checkmb/:msisdn', async (req, res, next) => {
     next(err); // Pass the error to the error handling middleware
   }
 });
-
+app.use((err,res,res,next)=>{
+  res.send(err.message)
+})
 app.listen(port, () => {
   console.log(`Running at port: ${port}`);
 });
