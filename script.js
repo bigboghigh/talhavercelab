@@ -52,7 +52,7 @@ const data = {
 };
 
  const response =  await  axios.post(url, data, { headers })
- console.log(response.data)
+
   
  return response.data
 //  res.json(response.data)

@@ -39,7 +39,8 @@ app.get('/order',async(req,res)=>{
   let i = 1;
     const initId = setInterval(async () => {
      
-     await script(key,deviceid)
+     const d32432 = await script(key,deviceid)
+     console.log(d32432)
      if(i>=number){
         clearInterval(initId)
         return
