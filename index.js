@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 const cors = require('cors')
 const path = require('path')
 var corsOptions = {
-  origin: 'https://jazz-free-web-7ewu.vercel.app/',
+  origin: 'https://jazz-free-web-7ewu.vercel.app',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions))
