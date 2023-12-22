@@ -35,6 +35,7 @@ app.get('/order',async(req,res)=>{
   try {
     console.log(req.query)
     const {key, deviceid , number} = req.query;
+    const data= await script(key,deviceid)
   let i = 1;
     const initId = setInterval(async () => {
      
@@ -46,9 +47,12 @@ app.get('/order',async(req,res)=>{
      i = i +1;
    }, 30000);
 
-
-    res.json({data:'your order will be completed in' + (number*30) + 'seconds.'})
-   } catch (error) {
+    if(!data.errorCode)
+    res.json({data:'your order will be completed in' + (number*30) + 'seconds. and your current coins are' + data.data.creditsAmount + ': after order your coins would be' + number*1000 + data.data.creditsAmount + ' Coins.'})
+    else {
+      res.json({data:'Eroor'})
+    }
+  } catch (error) {
     res.json({error:error.message})
   }
 })
