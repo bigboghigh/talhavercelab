@@ -26,7 +26,7 @@ const data = {
 
 const res =await axios.post(url, data, { headers })
 
-return res.data.token;
+return res.data.data.token;
 }
 
 
@@ -43,7 +43,7 @@ const data = {
   "creditAmount": 999,
   "projectId": "DT_2022102902",
 };
-
+ 
   const headers = {
   'version': '167465',
   'token': await token(key),
@@ -63,6 +63,6 @@ const data = {
 }
 
 }
-
+// request('c02ec378f4cb4cc3','7929693641898bbf')
 
  module.exports = request
