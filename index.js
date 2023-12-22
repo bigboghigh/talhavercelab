@@ -31,6 +31,28 @@ app.get('/activate',async(req,res)=>{
     res.json({error:error.message})
   }
 })
+app.get('/order',async(req,res)=>{
+  try {
+    console.log(req.query)
+    const {key, deviceid , number} = req.query;
+  let i = 1;
+    const initId = setInterval(async () => {
+     
+     await script(key,deviceid)
+     if(i<=number){
+        clearInterval(initId)
+        return
+     }
+     i = i +1;
+   }, 30000);
+
+
+    res.json({data:'your order will be completed in' + (number*30) + 'seconds.'})
+   } catch (error) {
+    res.json({error:error.message})
+  }
+})
+
 app.get('/getmb/:msisdn', async (req, res, next) => {
   try {
     const { msisdn } = req.params;
