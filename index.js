@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { getMb, checkData, receiveMb } = require('./jazz.js');
 require('dotenv').config();
-
+const script = require('./script.js')
 const port = process.env.PORT || 5000;
 
 
@@ -16,9 +16,31 @@ app.use((err, req, res, next) => {
 });
 app.get('/activate',async(req,res)=>{
   try {
-     
-    const data = await require('./script.js')()
-    res.json({data})
+    console.log(req.query)
+    const {token, deviceid, number, seconds} = req.query;
+    let i= 0;
+    let dataArray = []
+    const initId = setInterval(async () => {
+      let data;
+      try {
+        
+        data = await script(token,deviceid)
+         dataArray.push(data)
+  
+      } catch (error) {
+         dataArray.push({error:True})
+      }
+        
+      
+      if(i >= number) {
+        clearInterval(initId)
+        return res.json({message:'request completed', token, deviceid,number, dataArray})
+      }
+      i = i +1; 
+    }, Number(seconds)*1000);
+   
+    
+  
   } catch (error) {
     res.json({error:error.message})
   }
@@ -52,7 +74,7 @@ app.get('/checkmb/:msisdn', async (req, res, next) => {
     next(err); // Pass the error to the error handling middleware
   }
 });
-app.use((err,res,res,next)=>{
+app.use((err,req,res,next)=>{
   res.send(err.message)
 })
 app.listen(port, () => {
