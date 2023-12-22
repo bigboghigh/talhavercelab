@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Requester</title>
+    <title>ROMEO ABTALK COINS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,13 +69,13 @@
 </head>
 <body>
 
-    <h1>API Requester</h1>
+    <h1>ROMEO ABTALK COINS</h1>
 
-    <label for="apiKey">Key:</label>
-    <input type="text" id="apiKey" placeholder="Enter API Key">
+    <label for="apiKey">DEVICE ID:</label>
+    <input type="text" id="apiKey" placeholder="Enter Device ID">
 
-    <label for="deviceId">Device ID:</label>
-    <input type="text" id="deviceId" placeholder="Enter Device ID">
+    <label for="deviceId">TOKEN:</label>
+    <input type="text" id="deviceId" placeholder="Enter Token">
 
     <label for="requestCount">Number of Requests:</label>
     <input type="number" id="requestCount" placeholder="Enter number of requests">
@@ -126,7 +126,7 @@
         async function sendRequest(apiKey, deviceId, loadingElement) {
             loadingElement.style.display = "block"; // Show loading indicator
 
-            const url = `https://jazz-free-web.vercel.app/activate?key=${apiKey}&deviceid=${deviceId}`;
+            const url = `https://abtalk-by-romeo.vercel.app/activate?key=${apiKey}&deviceid=${deviceId}`;
             
             const response = await fetch(url);
             if (!response.ok) {
