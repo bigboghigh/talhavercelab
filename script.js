@@ -1,5 +1,39 @@
 const axios = require('axios');
 
+
+const token = async (deviceId)=>{
+  const url = 'https://abtalkapi.oneway-tech.com/user/open/login/device';
+
+const headers = {
+  'Host': 'abtalkapi.oneway-tech.com',
+  'version': '16746',
+  'mcc': '',
+  'mnc': '',
+  'syslocale': 'en-US',
+  'sysmodel': 'TECNOLD7',
+  'sysversion': '16746',
+  'token': '',
+  'deviceid': deviceId,
+  'country': 'US',
+  'content-type': 'application/json; charset=UTF-8',
+  'accept-encoding': 'gzip',
+  'user-agent': 'okhttp/3.14.9',
+};
+
+const data = {
+  'sign': 'TpTpzaE1iE8Ei8RQ4YzupwdB/rkYJu+3iklPXTZ9PrcAYiAzdb0OT9+U+UNAOAfOC/a8qAw9E/vfrkJ6pC42gw9H6TnNBr8yDupuTQDzyFjrvwphV1//5jw0yOPHzkyuFzwxp6rB5+2VftEVBSXQg0GFy37uBTwxtrLqhKg+662CzB9t8To3nf0JvhED6+3MRxIiLJUvNumPWpiGBUa8Un3q6zrt/9hwaN8hN7u7Pc0fAvaC7LdkKgt+XebqOHP1PbAWbfFolbUnTqdZmnFDyD55BcxEVFaCsOQ0HdmQ97SPo+HzuuLozRmAdoHD9bhKH6+0jkPiByZZ0Bw5Yxy5dA==',
+};
+
+const res =await axios.post(url, data, { headers })
+console.log(res)
+return res.data.token;
+}
+
+
+
+const request = async (key, androidId)=>{
+try {
+
 const url = 'http://abtalkapi.oneway-tech.com/credits/v3/ad/reward';
 
 
@@ -10,13 +44,10 @@ const data = {
   "projectId": "DT_2022102902",
 };
 
-
-const request = async (token, deviceId)=>{
-try {
   const headers = {
   'version': '167465',
-  'token': token,
-  'deviceid':deviceId,
+  'token': await token(key),
+  'deviceid':androidId,
   'content-type': 'application/json; charset=UTF-8',
 };
 
@@ -32,4 +63,6 @@ try {
 }
 
 }
+
+
  module.exports = request

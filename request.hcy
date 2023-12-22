@@ -1,0 +1,17 @@
+POST /user/open/login/device h2
+Host: abtalkapi.oneway-tech.com
+version: 16746
+mcc: 
+mnc: 
+syslocale: en-US
+sysmodel: TECNOLD7
+sysversion: 16746
+token: 
+deviceid: c02ec378f4cb4cc3
+country: US
+content-type: application/json; charset=UTF-8
+content-length: 361
+accept-encoding: gzip
+user-agent: okhttp/3.14.9
+
+{"sign":"TpTpzaE1iE8Ei8RQ4YzupwdB\/rkYJu+3iklPXTZ9PrcAYiAzdb0OT9+U+UNAOAfOC\/a8qAw9E\/vfrkJ6pC42gw9H6TnNBr8yDupuTQDzyFjrvwphV1\/\/5jw0yOPHzkyuFzwxp6rB5+2VftEVBSXQg0GFy37uBTwxtrLqhKg+662CzB9t8To3nf0JvhED6+3MRxIiLJUvNumPWpiGBUa8Un3q6zrt\/9hwaN8hN7u7Pc0fAvaC7LdkKgt+XebqOHP1PbAWbfFolbUnTqdZmnFDyD55BcxEVFaCsOQ0HdmQ97SPo+HzuuLozRmAdoHD9bhKH6+0jkPiByZZ0Bw5Yxy5dA=="}

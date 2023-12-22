@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Requester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #timer {
+            margin-top: 10px;
+            color: #888;
+        }
+
+        #completionText {
+            color: #008000;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .request-info {
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>API Requester</h1>
+
+    <label for="apiKey">Key:</label>
+    <input type="text" id="apiKey" placeholder="Enter API Key">
+
+    <label for="deviceId">Device ID:</label>
+    <input type="text" id="deviceId" placeholder="Enter Device ID">
+
+    <label for="requestCount">Number of Requests:</label>
+    <input type="number" id="requestCount" placeholder="Enter number of requests">
+
+    <label for="requestInterval">Time between Requests (in seconds):</label>
+    <input type="number" id="requestInterval" placeholder="Enter time between requests">
+
+    <button onclick="startRequests()">Start Requests</button>
+
+    <div id="result"></div>
+    <p id="timer"></p>
+    <p id="completionText"></p>
+    <div id="loading" class="loading">Loading...</div>
+
+    <script>
+        async function startRequests() {
+            const apiKey = document.getElementById("apiKey").value;
+            const deviceId = document.getElementById("deviceId").value;
+            const requestCount = document.getElementById("requestCount").value;
+            const requestInterval = document.getElementById("requestInterval").value;
+
+            const timerElement = document.getElementById("timer");
+            const completionTextElement = document.getElementById("completionText");
+            const loadingElement = document.getElementById("loading");
+
+            loadingElement.style.display = "block"; // Show loading indicator
+
+            for (let i = 0; i < requestCount; i++) {
+                try {
+                    const response = await sendRequest(apiKey, deviceId, loadingElement);
+                    displayResult(`Request ${i + 1}: Credits Amount - ${response.data.creditsAmount}`);
+                } catch (error) {
+                    displayResult(`Request ${i + 1}: Error - ${error.message}`);
+                }
+
+                // Update the timer
+                await updateTimer(timerElement, requestInterval);
+
+                // Wait for the specified interval before the next request
+                await sleep(requestInterval * 1000);
+            }
+
+            loadingElement.style.display = "none"; // Hide loading indicator
+            completionTextElement.textContent = "All requests completed!";
+            completionTextElement.style.color = "#008000"; // Green color for completion text
+        }
+
+        async function sendRequest(apiKey, deviceId, loadingElement) {
+            loadingElement.style.display = "block"; // Show loading indicator
+
+            const url = `http://127.0.0.1:5000/activate?key=${apiKey}&deviceid=${deviceId}`;
+            
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            loadingElement.style.display = "none"; // Hide loading indicator
+
+            return data;
+        }
+
+        function displayResult(message) {
+            const resultDiv = document.getElementById("result");
+            const requestInfoElement = document.createElement("p");
+            requestInfoElement.className = "request-info";
+            requestInfoElement.textContent = message;
+            resultDiv.appendChild(requestInfoElement);
+        }
+
+        async function updateTimer(timerElement, seconds) {
+            for (let i = seconds; i > 0; i--) {
+                timerElement.textContent = `Time left for next request: ${i} seconds`;
+                await sleep(1000);
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
+</html>

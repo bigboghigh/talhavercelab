@@ -5,14 +5,17 @@ require('dotenv').config();
 const script = require('./script.js')
 const port = process.env.PORT || 5000;
 const cors = require('cors')
+const path = require('path')
 var corsOptions = {
   origin: 'http://romeoch2132.pythonanywhere.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions))
 app.use(express.json());
-app.use(express.static('./public'));
-
+// app.use(express.static('./public1'));
+app.get('/',async(req,res)=>{
+  res.sendFile(path.join(__dirname, 'public1','index.html'))
+})
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -21,31 +24,10 @@ app.use((err, req, res, next) => {
 app.get('/activate',async(req,res)=>{
   try {
     console.log(req.query)
-    const {token, deviceid, number, seconds} = req.query;
-    let i= 1;
-    let dataArray = []
-    const initId = setInterval(async () => {
-      let data;
-      try {
-        
-        data = await script(token,deviceid)
-         dataArray.push(data)
-  
-      } catch (error) {
-         dataArray.push({error:True})
-      }
-        
-      
-      if(i >= number) {
-        clearInterval(initId)
-        return res.json({message:'request completed', token, deviceid,number, dataArray})
-      }
-      i = i +1; 
-    }, Number(seconds)*1000);
-   
-    
-  
-  } catch (error) {
+    const {key, deviceid} = req.query;
+     const data = await script(key,deviceid)
+    res.json(data)
+   } catch (error) {
     res.json({error:error.message})
   }
 })
