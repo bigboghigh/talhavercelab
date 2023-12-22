@@ -6,7 +6,7 @@ const script = require('./script.js')
 const port = process.env.PORT || 5000;
 const cors = require('cors')
 var corsOptions = {
-  origin: 'http://example.com',
+  origin: 'http://romeoch2132.pythonanywhere.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions))
