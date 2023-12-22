@@ -18,7 +18,7 @@ app.get('/activate',async(req,res)=>{
   try {
     console.log(req.query)
     const {token, deviceid, number, seconds} = req.query;
-    let i= 0;
+    let i= 1;
     let dataArray = []
     const initId = setInterval(async () => {
       let data;
